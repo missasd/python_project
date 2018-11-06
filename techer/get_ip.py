@@ -11,17 +11,17 @@ def get_ip():
 get_ip()
 
 
-# from urllib import request
-#
-# # 获取外网IP
-# def get_out_ip():
-#     url = r'http://1212.ip138.com/ic.asp'
-#     r = request.urlopen(url)
-#     txt = r.text
-#     ip = txt[txt.find("[") + 1: txt.find("]")]
-#     print('ip:' + ip)
-#     return ip
-#
-# get_out_ip()
+from urllib import request
+
+# 获取外网IP
+def get_out_ip():
+    url = r'http://1212.ip138.com/ic.asp'
+    r = request.urlopen(url)
+    txt = r.text
+    ip = txt[txt.find("[") + 1: txt.find("]")]
+    print('ip:' + ip)
+    return ip
+
+get_out_ip()
 
 

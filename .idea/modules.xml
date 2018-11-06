@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://F:/Project_data/git/TheMonitor/.idea/TheMonitor.iml" filepath="F:/Project_data/git/TheMonitor/.idea/TheMonitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/python_project.iml" filepath="$PROJECT_DIR$/.idea/python_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/../django_project/songwei/.idea/songwei.iml" filepath="$PROJECT_DIR$/../django_project/songwei/.idea/songwei.iml" />
     </modules>
