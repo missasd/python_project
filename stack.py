@@ -1,0 +1,3 @@
+# def vertical(img):
+
+

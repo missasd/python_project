@@ -1,27 +1,49 @@
 #_*_ utf-8 _*_
 from urllib import request
-def get_ip():
+import time
+import pymysql
+
+def get_ip_time():
 #获取公网IP
     url = request.urlopen(r"http://ip.42.pl/raw")
     ip_address = url.read()
     ip_address = ip_address.decode('utf-8')
-    print(ip_address)
+    # print(ip_address)
+    times = time.localtime()
+    times = time.strftime("%Y-%m-%d %H:%M:%S", times)
+    return ip_address, times
 
 
-get_ip()
+def add_to_txt(ip_address, times):
+    file = open('F:/ip.txt', 'a')
+    file.write("电信出口Ip是:%s"%ip_address +"  "   "时间:%s\n"%times)
+    file.close()
+
+def add_to_sql(ip, times):
+    conn = pymysql.connect(host="104.225.147.97", port=3306, user="u_ip", password="ipv6@2018", database="ip", charset="utf8")
+    cursor = conn.cursor()
+    sql = "INSERT INTO labip(ip, date) values(%s, %s)"
+    param = (ip, times)
+    cursor.execute(sql, param)
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 
-from urllib import request
 
-# 获取外网IP
-def get_out_ip():
-    url = r'http://1212.ip138.com/ic.asp'
-    r = request.urlopen(url)
-    txt = r.text
-    ip = txt[txt.find("[") + 1: txt.find("]")]
-    print('ip:' + ip)
-    return ip
 
-get_out_ip()
+
+while True:
+     ip, times = get_ip_time()
+     add_to_txt(ip, times)
+     add_to_sql(ip, times)
+     print("电信出口IP是{},时间{}".format(ip, times))
+     time.sleep(600)
+
+
+
+
+
+
 
 
